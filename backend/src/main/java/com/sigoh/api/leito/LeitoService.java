@@ -1,5 +1,6 @@
 package com.sigoh.api.leito;
 
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.data.domain.Sort;
@@ -10,8 +11,14 @@ import com.sigoh.api.common.exception.BusinessException;
 import com.sigoh.api.common.exception.ResourceNotFoundException;
 import com.sigoh.api.enfermaria.Enfermaria;
 import com.sigoh.api.enfermaria.EnfermariaRepository;
+import com.sigoh.api.historico.HistoricoLeito;
+import com.sigoh.api.historico.HistoricoLeitoRepository;
+import com.sigoh.api.historico.dto.HistoricoLeitoResponseDTO;
 import com.sigoh.api.leito.dto.LeitoRequestDTO;
 import com.sigoh.api.leito.dto.LeitoResponseDTO;
+import com.sigoh.api.leito.dto.StatusLeitoRequestDTO;
+import com.sigoh.api.usuario.Usuario;
+import com.sigoh.api.usuario.UsuarioRepository;
 
 @Service
 public class LeitoService {
@@ -20,11 +27,16 @@ public class LeitoService {
 
     private final LeitoRepository repository;
     private final EnfermariaRepository enfermariaRepository;
+    private final HistoricoLeitoRepository historicoRepository;
+    private final UsuarioRepository usuarioRepository;
     private final LeitoMapper mapper;
 
-    public LeitoService(LeitoRepository repository, EnfermariaRepository enfermariaRepository, LeitoMapper mapper) {
+    public LeitoService(LeitoRepository repository, EnfermariaRepository enfermariaRepository,
+            HistoricoLeitoRepository historicoRepository, UsuarioRepository usuarioRepository, LeitoMapper mapper) {
         this.repository = repository;
         this.enfermariaRepository = enfermariaRepository;
+        this.historicoRepository = historicoRepository;
+        this.usuarioRepository = usuarioRepository;
         this.mapper = mapper;
     }
 
@@ -73,6 +85,29 @@ public class LeitoService {
     public void excluir(Long id) {
         Leito leito = buscarEntidade(id);
         leito.setAtivo(false);
+    }
+
+    @Transactional
+    public LeitoResponseDTO alterarStatus(Long id, StatusLeitoRequestDTO dto, Long usuarioId) {
+        Leito leito = buscarEntidade(id);
+        StatusLeito anterior = leito.getStatus();
+        if (anterior == dto.status()) {
+            throw new BusinessException("O leito já está com o status " + dto.status());
+        }
+        Usuario usuario = usuarioRepository.getReferenceById(usuarioId);
+        leito.setStatus(dto.status());
+        leito.setAtualizadoEm(Instant.now());
+        leito.setAtualizadoPor(usuario);
+        historicoRepository.save(new HistoricoLeito(leito, anterior, dto.status(), usuario));
+        return mapper.paraResposta(leito);
+    }
+
+    @Transactional(readOnly = true)
+    public List<HistoricoLeitoResponseDTO> listarHistorico(Long id) {
+        buscarEntidade(id);
+        return historicoRepository.findByLeitoIdOrderByRegistradoEmDesc(id).stream()
+                .map(mapper::paraHistorico)
+                .toList();
     }
 
     private Leito buscarEntidade(Long id) {

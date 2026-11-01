@@ -25,6 +25,11 @@ public class GlobalExceptionHandler {
         return montarResposta(HttpStatus.UNPROCESSABLE_CONTENT, ex.getMessage(), request);
     }
 
+    @ExceptionHandler(CredenciaisInvalidasException.class)
+    public ResponseEntity<ApiError> tratarCredenciaisInvalidas(CredenciaisInvalidasException ex, HttpServletRequest request) {
+        return montarResposta(HttpStatus.UNAUTHORIZED, ex.getMessage(), request);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> tratarValidacao(MethodArgumentNotValidException ex, HttpServletRequest request) {
         String mensagem = ex.getBindingResult().getFieldErrors().stream()

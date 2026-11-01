@@ -12,5 +12,6 @@ public record LeitoResponseDTO(
         String enfermariaNome,
         Long blocoId,
         String blocoNome,
-        Instant atualizadoEm) {
+        Instant atualizadoEm,
+        String atualizadoPorNome) {
 }

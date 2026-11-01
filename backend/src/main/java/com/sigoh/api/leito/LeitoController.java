@@ -5,8 +5,11 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,8 +20,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.sigoh.api.historico.dto.HistoricoLeitoResponseDTO;
 import com.sigoh.api.leito.dto.LeitoRequestDTO;
 import com.sigoh.api.leito.dto.LeitoResponseDTO;
+import com.sigoh.api.leito.dto.StatusLeitoRequestDTO;
 
 import jakarta.validation.Valid;
 
@@ -63,5 +68,16 @@ public class LeitoController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void excluir(@PathVariable Long id) {
         service.excluir(id);
+    }
+
+    @PatchMapping("/{id}/status")
+    public LeitoResponseDTO alterarStatus(@PathVariable Long id, @Valid @RequestBody StatusLeitoRequestDTO dto,
+            @AuthenticationPrincipal Jwt jwt) {
+        return service.alterarStatus(id, dto, Long.valueOf(jwt.getSubject()));
+    }
+
+    @GetMapping("/{id}/historico")
+    public List<HistoricoLeitoResponseDTO> historico(@PathVariable Long id) {
+        return service.listarHistorico(id);
     }
 }

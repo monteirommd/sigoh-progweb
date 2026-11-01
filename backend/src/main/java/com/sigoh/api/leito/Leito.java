@@ -3,6 +3,7 @@ package com.sigoh.api.leito;
 import java.time.Instant;
 
 import com.sigoh.api.enfermaria.Enfermaria;
+import com.sigoh.api.usuario.Usuario;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -47,6 +48,10 @@ public class Leito {
 
     @Column(name = "atualizado_em", nullable = false)
     private Instant atualizadoEm;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "atualizado_por_id")
+    private Usuario atualizadoPor;
 
     @PrePersist
     void marcarCriacao() {

@@ -18,3 +18,10 @@ spring:
 
 server:
   port: 8080
+
+sigoh:
+  jwt:
+    secret: ${JWT_SECRET:sigoh-dev-secret-troque-em-producao-0123456789}
+    expiracao-horas: 8
+  cors:
+    origins: ${CORS_ORIGINS:http://localhost:5173}
