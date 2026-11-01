@@ -10,14 +10,17 @@ import com.sigoh.api.bloco.dto.BlocoRequestDTO;
 import com.sigoh.api.bloco.dto.BlocoResponseDTO;
 import com.sigoh.api.common.exception.BusinessException;
 import com.sigoh.api.common.exception.ResourceNotFoundException;
+import com.sigoh.api.enfermaria.EnfermariaRepository;
 
 @Service
 public class BlocoService {
     private final BlocoRepository repository;
+    private final EnfermariaRepository enfermariaRepository;
     private final BlocoMapper mapper;
 
-    public BlocoService(BlocoRepository repository, BlocoMapper mapper) {
+    public BlocoService(BlocoRepository repository, EnfermariaRepository enfermariaRepository, BlocoMapper mapper) {
         this.repository = repository;
+        this.enfermariaRepository = enfermariaRepository;
         this.mapper = mapper;
     }
 
@@ -55,6 +58,9 @@ public class BlocoService {
     @Transactional
     public void excluir(Long id) {
         Bloco bloco = buscarEntidade(id);
+        if (enfermariaRepository.existsByBlocoId(id)) {
+            throw new BusinessException("Bloco possui enfermarias vinculadas e não pode ser excluído");
+        }
         repository.delete(bloco);
     }
 
