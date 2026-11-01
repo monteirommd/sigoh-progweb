@@ -1,0 +1,77 @@
+.tecnico {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.tecnico-bloco select {
+  min-height: 3rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.tecnico-resumo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--espaco-2);
+  margin: 0 0 var(--espaco-4);
+  padding: 0;
+  list-style: none;
+}
+
+.tecnico-resumo li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--espaco-2) var(--espaco-1);
+  border-radius: var(--raio);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.tecnico-resumo .numero {
+  font-size: 1.75rem;
+}
+
+.tecnico .mapa {
+  grid-template-columns: 1fr;
+}
+
+.tecnico .mapa-bloco h3 {
+  display: none;
+}
+
+.tecnico .mapa-enfermaria h4 {
+  font-size: 0.9rem;
+}
+
+.tecnico .mapa-leitos {
+  grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
+  gap: var(--espaco-3);
+}
+
+.tecnico .leito {
+  min-height: 4.5rem;
+  justify-content: center;
+  padding: var(--espaco-3);
+}
+
+.tecnico .leito-codigo {
+  font-size: 1.4rem;
+}
+
+.tecnico .leito-status {
+  font-size: 0.8rem;
+}
+
+.tecnico .opcoes-status {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 480px) {
+  .tecnico-resumo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
