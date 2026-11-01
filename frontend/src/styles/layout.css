@@ -1,0 +1,128 @@
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--espaco-6);
+  padding: 0 clamp(var(--espaco-4), 2vw, var(--espaco-8));
+  background: linear-gradient(100deg, var(--cor-primaria-escura) 0%, var(--cor-primaria-media) 100%);
+  color: #fff;
+  box-shadow: var(--sombra-2);
+}
+
+.cabecalho-marca {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--espaco-3) 0;
+}
+
+.cabecalho-marca strong {
+  font-family: var(--fonte-destaque);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.cabecalho-marca span {
+  font-family: var(--fonte-destaque);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.95;
+}
+
+.cabecalho nav {
+  display: flex;
+}
+
+.cabecalho-menu {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cabecalho-menu a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: var(--espaco-3) var(--espaco-4);
+  border-bottom: 4px solid transparent;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.cabecalho-menu a:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+
+.cabecalho-menu a.active {
+  border-bottom-color: #fff;
+  font-weight: 700;
+}
+
+.cabecalho-usuario {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-4);
+  margin-left: auto;
+  padding: var(--espaco-2) 0;
+}
+
+.cabecalho-relogio {
+  font-family: var(--fonte-destaque);
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.cabecalho-pessoa {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  text-align: right;
+}
+
+.cabecalho-pessoa small {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cabecalho .btn-secundario {
+  background: transparent;
+  color: #fff;
+  border-color: rgb(255 255 255 / 0.7);
+}
+
+.cabecalho .btn-secundario:hover {
+  background: rgb(255 255 255 / 0.15);
+}
+
+.conteudo {
+  padding: clamp(var(--espaco-4), 2vw, var(--espaco-8));
+}
+
+@media (max-width: 760px) {
+  .cabecalho {
+    gap: 0;
+  }
+
+  .cabecalho-marca {
+    flex: 1;
+  }
+
+  .cabecalho nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .cabecalho-relogio {
+    display: none;
+  }
+}

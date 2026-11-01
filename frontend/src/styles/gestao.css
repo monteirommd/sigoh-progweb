@@ -1,0 +1,62 @@
+.trilha ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-2);
+  margin: 0 0 var(--espaco-3);
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.trilha li + li::before {
+  content: "›";
+  margin-right: var(--espaco-2);
+  color: var(--cor-texto-suave);
+}
+
+.trilha [aria-current="page"] {
+  font-weight: 700;
+  color: var(--cor-primaria-escura);
+}
+
+.pagina-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-4);
+  margin-bottom: var(--espaco-4);
+}
+
+.pagina-topo h1 {
+  margin: 0;
+}
+
+.coluna-acoes {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.tabela .acoes {
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
+.tabela .btn {
+  min-height: 2.25rem;
+  padding: var(--espaco-1) var(--espaco-3);
+  box-shadow: none;
+}
+
+.badge-papel {
+  display: inline-block;
+  padding: 0.15rem var(--espaco-2);
+  border-radius: var(--raio-pequeno);
+  background: var(--cor-primaria-clara);
+  color: var(--cor-primaria-escura);
+  font-family: var(--fonte-destaque);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}

@@ -1,0 +1,40 @@
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-1);
+  margin-bottom: var(--espaco-4);
+}
+
+.campo label {
+  font-family: var(--fonte-destaque);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cor-texto-suave);
+}
+
+.campo input,
+.campo select {
+  min-height: 2.75rem;
+  padding: var(--espaco-2) var(--espaco-3);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pequeno);
+  font: inherit;
+  color: var(--cor-texto);
+  background: var(--cor-superficie);
+}
+
+.campo input:hover,
+.campo select:hover {
+  border-color: var(--cor-primaria);
+}
+
+.campo-senha {
+  display: flex;
+  gap: var(--espaco-2);
+}
+
+.campo-senha input {
+  flex: 1;
+}

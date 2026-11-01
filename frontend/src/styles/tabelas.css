@@ -1,0 +1,55 @@
+.tabela-container {
+  overflow-x: auto;
+  border: 1px solid var(--cor-borda-suave);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+  box-shadow: var(--sombra-1);
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela caption {
+  padding: var(--espaco-3) var(--espaco-4);
+  text-align: left;
+  font-family: var(--fonte-destaque);
+  font-weight: 700;
+  color: var(--cor-primaria-escura);
+}
+
+.tabela th,
+.tabela td {
+  padding: var(--espaco-3) var(--espaco-4);
+  border-bottom: 1px solid var(--cor-borda-suave);
+  text-align: left;
+}
+
+.tabela thead th {
+  background: var(--cor-primaria-clara);
+  font-family: var(--fonte-destaque);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cor-primaria-escura);
+}
+
+.tabela tbody th {
+  font-weight: 600;
+}
+
+.tabela tbody tr:nth-child(even) {
+  background: #f7f9fc;
+}
+
+.tabela tbody tr:hover {
+  background: var(--cor-primaria-clara);
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-2);
+}

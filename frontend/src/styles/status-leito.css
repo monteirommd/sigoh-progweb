@@ -1,0 +1,30 @@
+.badge-status {
+  display: inline-block;
+  padding: 0.15rem var(--espaco-2);
+  border-radius: var(--raio-pequeno);
+  font-family: var(--fonte-destaque);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.status-disponivel {
+  background: var(--status-disponivel);
+  color: #fff;
+}
+
+.status-ocupado {
+  background: var(--status-ocupado);
+  color: #fff;
+}
+
+.status-limpeza {
+  background: var(--status-limpeza);
+  color: var(--cor-texto);
+}
+
+.status-bloqueado {
+  background: var(--status-bloqueado);
+  color: #fff;
+}

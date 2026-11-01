@@ -1,0 +1,230 @@
+.painel-secao {
+  margin-bottom: var(--espaco-8);
+}
+
+.painel-geral {
+  display: grid;
+  grid-template-columns: minmax(16rem, 1fr) 3fr;
+  gap: var(--espaco-4);
+}
+
+.taxa-geral {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--espaco-2);
+  padding: var(--espaco-6);
+  border-radius: var(--raio);
+  background: linear-gradient(135deg, var(--cor-primaria-escura) 0%, var(--cor-primaria-media) 100%);
+  color: #fff;
+  box-shadow: var(--sombra-2);
+}
+
+.taxa-geral .rotulo {
+  color: #fff;
+}
+
+.taxa-geral-valor {
+  font-size: clamp(2.75rem, 5vw, 4rem);
+}
+
+.taxa-geral .badge-nivel {
+  align-self: flex-start;
+}
+
+.resumo-status {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--espaco-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resumo-status-item {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-4);
+  border-left-width: 6px;
+}
+
+.borda-status-disponivel {
+  border-left-color: var(--status-disponivel);
+}
+
+.borda-status-ocupado {
+  border-left-color: var(--status-ocupado);
+}
+
+.borda-status-limpeza {
+  border-left-color: var(--status-limpeza);
+}
+
+.borda-status-bloqueado {
+  border-left-color: var(--status-bloqueado);
+}
+
+.resumo-status-icone {
+  display: flex;
+  padding: var(--espaco-3);
+  border-radius: var(--raio);
+}
+
+.resumo-status-textos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-1);
+}
+
+.resumo-status-numero {
+  font-size: 2.5rem;
+  color: var(--cor-primaria-escura);
+}
+
+.grade-blocos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: var(--espaco-4);
+}
+
+.card-bloco {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+  border-top: 6px solid var(--cor-borda);
+}
+
+.card-bloco-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-2);
+}
+
+.card-bloco-topo h3 {
+  margin: 0;
+}
+
+.card-bloco-taxa {
+  display: flex;
+  align-items: baseline;
+  gap: var(--espaco-2);
+  margin: 0;
+}
+
+.card-bloco-taxa .numero {
+  font-size: 2.5rem;
+  color: var(--cor-primaria-escura);
+}
+
+.barra {
+  height: 0.6rem;
+  border-radius: var(--raio-pequeno);
+  background: var(--cor-borda-suave);
+  overflow: hidden;
+}
+
+.barra-preenchida {
+  height: 100%;
+}
+
+.card-bloco-contagens {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--espaco-2);
+  margin: 0;
+  padding-top: var(--espaco-3);
+  border-top: 1px solid var(--cor-borda-suave);
+}
+
+.card-bloco-contagens dt {
+  font-size: 0.68rem;
+}
+
+.card-bloco-contagens dd {
+  margin: var(--espaco-1) 0 0;
+  font-size: 1.5rem;
+}
+
+.card-bloco-total {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.badge-nivel {
+  padding: 0.15rem var(--espaco-2);
+  border-radius: var(--raio-pequeno);
+  font-family: var(--fonte-destaque);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-bloco.nivel-0 {
+  border-top-color: var(--nivel-0);
+}
+
+.card-bloco.nivel-1 {
+  border-top-color: var(--nivel-1);
+}
+
+.card-bloco.nivel-2 {
+  border-top-color: var(--nivel-2);
+}
+
+.card-bloco.nivel-3 {
+  border-top-color: var(--nivel-3);
+}
+
+.card-bloco.nivel-0 .barra-preenchida {
+  background: var(--nivel-0);
+}
+
+.card-bloco.nivel-1 .barra-preenchida {
+  background: var(--nivel-1);
+}
+
+.card-bloco.nivel-2 .barra-preenchida {
+  background: var(--nivel-2);
+}
+
+.card-bloco.nivel-3 .barra-preenchida {
+  background: var(--nivel-3);
+}
+
+.badge-nivel.nivel-0 {
+  background: var(--cor-primaria-clara);
+  color: var(--cor-primaria-escura);
+}
+
+.badge-nivel.nivel-1 {
+  background: var(--nivel-1);
+  color: var(--cor-texto);
+}
+
+.badge-nivel.nivel-2 {
+  background: var(--nivel-2);
+  color: #fff;
+}
+
+.badge-nivel.nivel-3 {
+  background: var(--nivel-3);
+  color: #fff;
+}
+
+@media (max-width: 1100px) {
+  .painel-geral {
+    grid-template-columns: 1fr;
+  }
+
+  .resumo-status {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .resumo-status {
+    grid-template-columns: 1fr;
+  }
+}

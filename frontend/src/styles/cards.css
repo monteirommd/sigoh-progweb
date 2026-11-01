@@ -1,0 +1,7 @@
+.card {
+  padding: var(--espaco-4);
+  border: 1px solid var(--cor-borda-suave);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+  box-shadow: var(--sombra-1);
+}

@@ -1,0 +1,17 @@
+.alerta {
+  padding: var(--espaco-3) var(--espaco-4);
+  border-left: 4px solid currentColor;
+  border-radius: var(--raio-pequeno);
+  margin-bottom: var(--espaco-4);
+  font-weight: 500;
+}
+
+.alerta-erro {
+  color: var(--cor-erro);
+  background: var(--cor-erro-fundo);
+}
+
+.alerta-sucesso {
+  color: var(--cor-sucesso);
+  background: var(--cor-sucesso-fundo);
+}
