@@ -4,6 +4,8 @@ Aplicação web para acompanhar, em tempo quase real, a ocupação dos leitos de
 
 Trabalho acadêmico de Programação Web: API REST em Spring Boot + front-end React separado.
 
+**Repositório:** https://github.com/monteirommd/sigoh-progweb
+
 ## Funcionalidades
 
 - **Login com JWT** e quatro papéis de acesso (veja [Papéis e permissões](#papéis-e-permissões))
