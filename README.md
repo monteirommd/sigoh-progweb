@@ -12,6 +12,7 @@ Trabalho acadêmico de Programação Web: API REST em Spring Boot + front-end Re
 - **Tela do técnico**: versão para celular, com seletor de bloco e botões grandes
 - **Cadastros (CRUD completo)**: blocos, enfermarias, leitos e usuários
 - **Histórico de status**: quem mudou, de qual status para qual, e quando
+- **Relatório em PDF** gerado pela API: taxa geral, ocupação por bloco e lista de leitos
 - **Atualização automática** das telas a cada 5 segundos (polling)
 - **Acessibilidade WCAG AA** e layout responsivo
 
@@ -19,7 +20,7 @@ Trabalho acadêmico de Programação Web: API REST em Spring Boot + front-end Re
 
 | Camada | Tecnologia |
 |---|---|
-| Back-end | Java 17, Spring Boot 4.0.9, Spring Data JPA (Hibernate 7), Spring Security 7 + OAuth2 Resource Server (JWT), Bean Validation, Flyway, Lombok, springdoc-openapi (Swagger) |
+| Back-end | Java 17, Spring Boot 4.0.9, Spring Data JPA (Hibernate 7), Spring Security 7 + OAuth2 Resource Server (JWT), Bean Validation, Flyway, Lombok, springdoc-openapi (Swagger), OpenPDF (relatório PDF) |
 | Banco de dados | PostgreSQL 16 |
 | Infraestrutura | Docker Compose (banco, API e front-end com Nginx) |
 | Front-end | React 19, TypeScript 6, Vite 8, React Router 7, lucide-react (ícones), CSS puro |
@@ -102,6 +103,7 @@ As permissões são garantidas **no back-end** (`SecurityConfig`), que responde 
 | PATCH | `/api/leitos/{id}/status` | ADMIN, GESTAO, TECNICO |
 | GET | `/api/leitos/{id}/historico` | Autenticado |
 | GET | `/api/ocupacao/blocos` | Autenticado |
+| GET | `/api/relatorios/ocupacao` (PDF) | Autenticado |
 | GET / POST / PUT / DELETE | `/api/usuarios`, `/api/usuarios/{id}` | ADMIN |
 
 Todos os erros seguem o mesmo formato:
@@ -144,7 +146,8 @@ com.sigoh.api
 ├── enfermaria/  CRUD de enfermarias
 ├── leito/       CRUD, status e consulta de leitos
 ├── historico/   histórico de mudanças de status
-├── ocupacao/    cálculo da taxa por bloco
+├── ocupacao/    cálculo e classificação da taxa por bloco
+├── relatorio/   relatório de ocupação em PDF (OpenPDF)
 ├── common/      tratamento global de erros (ApiError)
 └── config/      segurança (JWT, CORS, papéis) e Swagger
 ```

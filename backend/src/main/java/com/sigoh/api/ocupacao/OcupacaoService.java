@@ -49,7 +49,7 @@ public class OcupacaoService {
                 bloqueados, calcularTaxa(ocupados, total, bloqueados));
     }
 
-    static double calcularTaxa(long ocupados, long total, long bloqueados) {
+    public static double calcularTaxa(long ocupados, long total, long bloqueados) {
         long operacionais = total - bloqueados;
         if (operacionais <= 0) {
             return 0.0;

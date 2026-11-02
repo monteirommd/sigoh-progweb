@@ -1,3 +1,4 @@
+import { BotaoExportarPdf } from "../components/BotaoExportarPdf";
 import { CardOcupacaoBloco } from "../components/CardOcupacaoBloco";
 import { ResumoStatus } from "../components/ResumoStatus";
 import { useAtualizacaoPeriodica } from "../hooks/useAtualizacaoPeriodica";
@@ -28,7 +29,10 @@ export default function Painel() {
 
   return (
     <>
-      <h1>Painel de ocupação</h1>
+      <div className="painel-topo">
+        <h1>Painel de ocupação</h1>
+        <BotaoExportarPdf />
+      </div>
 
       {erro && (
         <p className="alerta alerta-erro" role="alert">

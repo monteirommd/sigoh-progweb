@@ -53,6 +53,35 @@ export async function requisitar<T>(caminho: string, metodo: Metodo = "GET", cor
   return (await resposta.json()) as T;
 }
 
+export async function baixarArquivo(caminho: string, nomePadrao: string): Promise<void> {
+  const headers: Record<string, string> = token ? { Authorization: `Bearer ${token}` } : {};
+
+  let resposta: Response;
+  try {
+    resposta = await fetch(URL_BASE + caminho, { headers });
+  } catch {
+    throw new ErroApi(0, "Não foi possível conectar ao servidor");
+  }
+
+  if (resposta.status === 401 && token) {
+    aoExpirarSessao?.();
+  }
+
+  if (!resposta.ok) {
+    const erro = (await resposta.json().catch(() => null)) as ApiError | null;
+    throw new ErroApi(resposta.status, erro?.message ?? `Erro ${resposta.status}`);
+  }
+
+  const disposicao = resposta.headers.get("Content-Disposition") ?? "";
+  const nome = /filename="?([^"]+)"?/.exec(disposicao)?.[1] ?? nomePadrao;
+  const url = URL.createObjectURL(await resposta.blob());
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = nome;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
 export function mensagemDeErro(erro: unknown): string {
   return erro instanceof Error ? erro.message : "Erro inesperado";
 }

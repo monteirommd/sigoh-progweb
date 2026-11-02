@@ -228,3 +228,16 @@
     grid-template-columns: 1fr;
   }
 }
+
+.painel-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-4);
+  margin-bottom: var(--espaco-4);
+}
+
+.painel-topo h1 {
+  margin: 0;
+}
