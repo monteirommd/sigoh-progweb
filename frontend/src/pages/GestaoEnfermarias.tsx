@@ -8,12 +8,9 @@ import { useAtualizacaoPeriodica } from "../hooks/useAtualizacaoPeriodica";
 import { blocoService, enfermariaService } from "../services/estrutura.service";
 import "../styles/gestao.css";
 import type { Bloco } from "../types/bloco";
-import type { Enfermaria } from "../types/enfermaria";
+import type { Enfermaria, EnfermariaRequest } from "../types/enfermaria";
 
-interface FormEnfermaria {
-  nome: string;
-  descricao: string;
-}
+type FormEnfermaria = Omit<EnfermariaRequest, "blocoId">;
 
 const FORM_VAZIO: FormEnfermaria = { nome: "", descricao: "" };
 

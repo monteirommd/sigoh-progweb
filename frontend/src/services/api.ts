@@ -15,7 +15,7 @@ export function definirAoExpirarSessao(callback: () => void) {
   aoExpirarSessao = callback;
 }
 
-export class ErroApi extends Error {
+class ErroApi extends Error {
   readonly status: number;
 
   constructor(status: number, mensagem: string) {

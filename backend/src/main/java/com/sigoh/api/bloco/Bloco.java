@@ -12,17 +12,17 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "bloco")
-@Getter  
-@Setter 
-@NoArgsConstructor 
+@Getter
+@Setter
+@NoArgsConstructor
 public class Bloco {
-    @Id 
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 120)
     private String nome;
-    
+
     @Column(length = 255)
-    private String descricao; 
+    private String descricao;
 }

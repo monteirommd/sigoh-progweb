@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { mensagemDeErro } from "../services/api";
 
-export const INTERVALO_PADRAO_MS = 5000;
+const INTERVALO_PADRAO_MS = 5000;
 
 export function useAtualizacaoPeriodica<T>(buscar: () => Promise<T>, intervaloMs = INTERVALO_PADRAO_MS) {
   const [dados, setDados] = useState<T | null>(null);
